@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # Add additional steps for deployment, testing, etc.
+    - name: Log in to DockerHub
+      run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      
     - name: Checkout repository
       uses: actions/checkout@v2
       
@@ -22,4 +26,4 @@ jobs:
     - name: Build Frontend
       run: yarn build
 
-    # Add additional steps for deployment, testing, etc.
+    
